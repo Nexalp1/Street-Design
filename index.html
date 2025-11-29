@@ -1,0 +1,1636 @@
+<!doctype html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STREET | Transforme Seguidores em Clientes Reais</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <style>
+    body { box-sizing: border-box; }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #000000;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+      height: 100%;
+      width: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Header Fixo Premium */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.2rem 0;
+      width: 100%;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    header.scrolled {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    .logo {
+      height: 180px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #ff006e, #8338ec);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .cta-header {
+      background: linear-gradient(135deg, #ff006e, #8338ec);
+      color: #ffffff;
+      padding: 0.7rem 1.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 0, 110, 0.4);
+      letter-spacing: 0.3px;
+    }
+
+    .cta-header:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 0, 110, 0.6);
+    }
+
+    /* Hero Section - Alto Impacto */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14rem 5% 6rem;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      background: radial-gradient(ellipse at top, rgba(255, 0, 110, 0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at bottom right, rgba(131, 56, 236, 0.15) 0%, transparent 60%),
+                  #000000;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255, 0, 110, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 8s ease-in-out infinite;
+      filter: blur(80px);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -10%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(131, 56, 236, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 10s ease-in-out infinite reverse;
+      filter: blur(80px);
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.2) translate(20px, -20px);
+        opacity: 0.8;
+      }
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: 5.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      letter-spacing: -2px;
+      color: #ffffff;
+    }
+
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 3.5rem;
+      font-weight: 400;
+      line-height: 1.6;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1.3rem 3rem;
+      background: linear-gradient(135deg, #ff006e, #8338ec);
+      color: #ffffff;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.3px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 40px rgba(255, 0, 110, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 50px rgba(255, 0, 110, 0.6);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1.3rem 3rem;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.3px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-3px);
+    }
+
+    /* Social Proof */
+    .social-proof {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin-top: 5rem;
+      flex-wrap: wrap;
+    }
+
+    .proof-item {
+      text-align: center;
+    }
+
+    .proof-number {
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ff006e, #8338ec);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .proof-label {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* Seções */
+    section {
+      padding: 8rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 5rem;
+    }
+
+    .section-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(131, 56, 236, 0.1));
+      border: 1px solid rgba(255, 0, 110, 0.3);
+      padding: 0.5rem 1.3rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #ff006e;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+      color: #ffffff;
+    }
+
+    .section-subtitle {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    /* Problema - Agitação */
+    .problem {
+      background: linear-gradient(180deg, #000000 0%, #0a0014 100%);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .problem-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 0, 110, 0.2);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ff006e, #8338ec);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .problem-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .problem-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 0, 110, 0.4);
+      transform: translateY(-5px);
+    }
+
+    .problem-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .problem-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .problem-card p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    /* Solução */
+    .solution {
+      background: #000000;
+    }
+
+    .solution-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+
+    .solution-text h3 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      line-height: 1.3;
+      color: #ffffff;
+    }
+
+    .solution-text h3 .highlight {
+      background: linear-gradient(135deg, #ff006e, #8338ec);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .solution-features {
+      list-style: none;
+      margin-top: 2rem;
+    }
+
+    .solution-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
+
+    .solution-features li::before {
+      content: '✓';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #ff006e, #8338ec);
+      border-radius: 50%;
+      flex-shrink: 0;
+      font-weight: 900;
+      font-size: 0.9rem;
+      margin-top: 2px;
+    }
+
+    .solution-visual {
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(131, 56, 236, 0.1));
+      border: 2px solid rgba(255, 0, 110, 0.2);
+      border-radius: 30px;
+      padding: 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solution-visual::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 0, 110, 0.3), transparent);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(-20px, 20px);
+      }
+    }
+
+    .solution-visual h4 {
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ff006e, #8338ec, #3a86ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.3;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Serviços Premium */
+    .services {
+      background: linear-gradient(180deg, #000000 0%, #0a0014 100%);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 3.5rem 3rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ff006e, #8338ec, #3a86ff);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(255, 0, 110, 0.2);
+    }
+
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.2), rgba(131, 56, 236, 0.2));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .service-card > p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .service-features li {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      padding: 0.7rem 0;
+      padding-left: 2rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .service-features li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #ff006e;
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+
+    /* Processo */
+    .process {
+      background: #000000;
+    }
+
+    .process-timeline {
+      max-width: 900px;
+      margin: 4rem auto 0;
+      position: relative;
+    }
+
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, #ff006e, #8338ec, #3a86ff);
+      transform: translateX(-50%);
+    }
+
+    .process-step {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .process-step:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .process-number {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #ff006e, #8338ec);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #ffffff;
+      flex-shrink: 0;
+      box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4);
+      position: relative;
+      z-index: 2;
+    }
+
+    .process-content {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .process-content:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateX(10px);
+    }
+
+    .process-step:nth-child(even) .process-content:hover {
+      transform: translateX(-10px);
+    }
+
+    .process-content h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .process-content p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    /* Transformação */
+    .transformation {
+      background: linear-gradient(180deg, #0a0014 0%, #000000 100%);
+      text-align: center;
+    }
+
+    .transformation-box {
+      max-width: 1000px;
+      margin: 4rem auto 0;
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(131, 56, 236, 0.1));
+      border: 2px solid rgba(255, 0, 110, 0.3);
+      border-radius: 30px;
+      padding: 5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .transformation-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 0, 110, 0.2), transparent);
+      border-radius: 50%;
+      animation: rotate 15s linear infinite;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .transformation-box h3 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.3;
+      background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Diferenciais */
+    .differentials {
+      background: #000000;
+    }
+
+    .differentials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .differential-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .differential-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-8px);
+    }
+
+    .differential-icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .differential-card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .differential-card p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    /* Portfolio CTA */
+    .portfolio-cta {
+      background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+      padding: 6rem 5%;
+      text-align: center;
+    }
+
+    .portfolio-cta h2 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .portfolio-cta p {
+      font-size: 1.4rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1.3rem 3rem;
+      background: #ffffff;
+      color: #ff006e;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.3px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-white:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    /* FAQ */
+    .faq {
+      background: linear-gradient(180deg, #000000 0%, #0a0014 100%);
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 4rem auto 0;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .faq-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #ff006e, #8338ec);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+      font-size: 1.05rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* CTA Final */
+    .final-cta {
+      background: #000000;
+      padding: 10rem 5%;
+      text-align: center;
+    }
+
+    .final-cta-box {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(131, 56, 236, 0.1));
+      border: 2px solid rgba(255, 0, 110, 0.3);
+      border-radius: 40px;
+      padding: 6rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 0, 110, 0.3), transparent);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .final-cta h2 {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      line-height: 1.2;
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-cta p {
+      font-size: 1.4rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 3.5rem;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.3rem 3rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.3px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-contact svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .btn-contact.whatsapp {
+      color: #25D366;
+      border-color: #25D366;
+      background: rgba(37, 211, 102, 0.1);
+    }
+
+    .btn-contact.whatsapp:hover {
+      background: rgba(37, 211, 102, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-contact.instagram {
+      color: #E4405F;
+      border-color: #E4405F;
+      background: rgba(228, 64, 95, 0.1);
+    }
+
+    .btn-contact.instagram:hover {
+      background: rgba(228, 64, 95, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(228, 64, 95, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: #000000;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4rem 5%;
+      text-align: center;
+      width: 100%;
+    }
+
+    .footer-logo {
+      height: 200px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo img {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.95rem;
+    }
+
+    /* Menu Mobile */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 6px;
+    }
+
+    .menu-toggle span {
+      width: 28px;
+      height: 3px;
+      background: #ffffff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Responsivo */
+    @media (max-width: 1024px) {
+      .solution-content,
+      .differentials-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .process-timeline::before {
+        left: 40px;
+      }
+
+      .process-step,
+      .process-step:nth-child(even) {
+        flex-direction: row;
+        padding-left: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100% - 80px);
+        background: rgba(0, 0, 0, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 3rem 0;
+        gap: 0;
+        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 1.5rem 0;
+      }
+
+      .cta-header {
+        margin-top: 2rem;
+      }
+
+      .hero {
+        padding: 8rem 5% 4rem;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .hero-cta-group {
+        flex-direction: column;
+      }
+
+      .social-proof {
+        gap: 2rem;
+      }
+
+      .proof-number {
+        font-size: 2.5rem;
+      }
+
+      section {
+        padding: 5rem 5%;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .problem-grid,
+      .services-grid,
+      .differentials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .transformation-box {
+        padding: 3rem 2rem;
+      }
+
+      .transformation-box h3 {
+        font-size: 2.2rem;
+      }
+
+      .portfolio-cta h2,
+      .final-cta h2 {
+        font-size: 2.5rem;
+      }
+
+      .portfolio-cta p,
+      .final-cta p {
+        font-size: 1.1rem;
+      }
+
+      .final-cta-box {
+        padding: 3rem 2rem;
+      }
+
+      .final-cta-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <header id="header">
+   <nav>
+    <div class="logo"><img src="Street transparente.png" alt="STREET Design Agency">
+    </div>
+    <ul class="nav-links" id="navLinks">
+     <li><a href="#home">Início</a></li>
+     <li><a href="#solucao">Solução</a></li>
+     <li><a href="#servicos">Serviços</a></li>
+     <li><a href="#processo">Processo</a></li>
+     <li><a href="#portfolio">Portfólio</a></li>
+     <li><a href="#faq">FAQ</a></li>
+     <li><a href="#contato" class="cta-header">Fale Conosco</a></li>
+    </ul>
+    <div class="menu-toggle" id="menuToggle"><span></span> <span></span> <span></span>
+    </div>
+   </nav>
+  </header>
+  <main>
+   <section class="hero" id="home">
+    <div class="hero-content">
+     <div class="hero-badge">
+      🚀 Agência de Design de Social Media
+     </div>
+     <h1>Transforme sua presença digital em <span class="gradient-text">resultados reais</span></h1>
+     <p class="hero-subtitle">Social media estratégico que converte seguidores em clientes. Design de alto impacto. Conteúdo que engaja. Resultados que você pode ver e sentir.</p>
+     <div class="hero-cta-group"><a href="#contato" class="btn-primary"> Quero Vender Mais <span>🚀</span> </a> <a href="#portfolio" class="btn-secondary"> Ver Trabalhos <span>👁️</span> </a>
+     </div>
+     <div class="social-proof">
+      <div class="proof-item">
+       <div class="proof-number">
+        
+       </div>
+       <div class="proof-label">
+        
+       </div>
+      </div>
+      <div class="proof-item">
+       <div class="proof-number">
+        
+       </div>
+       <div class="proof-label">
+        
+       </div>
+      </div>
+      <div class="proof-item">
+       <div class="proof-number">
+        
+       </div>
+       <div class="proof-label">
+       
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="problem">
+    <div class="section-header">
+     <div class="section-badge">
+      ⚠️ O Problema
+     </div>
+     <h2 class="section-title">Por que sua marca não está vendendo nas redes sociais?</h2>
+     <p class="section-subtitle">Você investe tempo e dinheiro, mas os resultados não aparecem. Reconhece algum desses problemas?</p>
+    </div>
+    <div class="problem-grid">
+     <div class="problem-card"><span class="problem-icon">😰</span>
+      <h3>Feed sem identidade</h3>
+      <p>Posts desorganizados, sem padrão visual. Seu feed não reflete a qualidade do seu negócio e afasta potenciais clientes.</p>
+     </div>
+     <div class="problem-card"><span class="problem-icon">📉</span>
+      <h3>Baixo engajamento</h3>
+      <p>Você posta, mas ninguém comenta, compartilha ou salva. Seu conteúdo se perde no meio de milhares de posts todos os dias.</p>
+     </div>
+     <div class="problem-card"><span class="problem-icon">💸</span>
+      <h3>Investimento sem retorno</h3>
+      <p>Gasta com posts e anúncios, mas não vê aumento nas vendas. Não consegue medir o impacto real do investimento em redes sociais.</p>
+     </div>
+     <div class="problem-card"><span class="problem-icon">⏰</span>
+      <h3>Falta de tempo</h3>
+      <p>Você tem um negócio para tocar. Não tem tempo nem conhecimento para criar artes profissionais e gerenciar redes sociais.</p>
+     </div>
+     <div class="problem-card"><span class="problem-icon">🤔</span>
+      <h3>Sem estratégia clara</h3>
+      <p>Posta sem planejamento, sem saber o que funciona. Não tem calendário editorial nem objetivos definidos para cada publicação.</p>
+     </div>
+     <div class="problem-card"><span class="problem-icon">🎨</span>
+      <h3>Design amador</h3>
+      <p>Usa ferramentas básicas ou templates genéricos. Suas artes não se destacam e passam despercebidas pelo seu público.</p>
+     </div>
+    </div>
+   </section>
+   <section class="solution" id="solucao">
+    <div class="section-header">
+     <div class="section-badge">
+      ✨ A Solução
+     </div>
+     <h2 class="section-title">Social media que transforma seguidores em clientes</h2>
+     <p class="section-subtitle">A STREET cria presença digital estratégica que gera resultados reais para o seu negócio</p>
+    </div>
+    <div class="solution-content">
+     <div class="solution-text">
+      <h3>Por que marcas inteligentes escolhem a <span class="highlight">STREET</span>?</h3>
+      <ul class="solution-features">
+       <li><strong>Design de alto impacto:</strong> Artes profissionais que param o scroll e chamam atenção do seu público-alvo</li>
+       <li><strong>Estratégia de conteúdo:</strong> Cada post tem um objetivo claro: educar, engajar ou converter em venda</li>
+       <li><strong>Identidade visual única:</strong> Criamos um feed coeso que transmite profissionalismo e fortalece sua marca</li>
+       <li><strong>Copy que converte:</strong> Textos persuasivos escritos por especialistas em comunicação e vendas</li>
+       <li><strong>Acompanhamento contínuo:</strong> Analisamos resultados e ajustamos a estratégia para maximizar seu ROI</li>
+       <li><strong>Entrega rápida:</strong> Primeiras artes prontas em até 5 dias úteis. Sem enrolação, sem atrasos</li>
+      </ul>
+     </div>
+     <div class="solution-visual">
+      <h4>Rapidez, qualidade e exclusividade: esses três fatores juntos só a STREET proporciona</h4>
+     </div>
+    </div>
+   </section>
+   <section class="services" id="servicos">
+    <div class="section-header">
+     <div class="section-badge">
+      💼 Nossos Serviços
+     </div>
+     <h2 class="section-title">O que fazemos pela sua marca</h2>
+     <p class="section-subtitle">Um serviço completo focado em fazer sua marca vender mais todos os dias</p>
+    </div>
+    <div class="services-grid">
+     <div class="service-card">
+      <div class="service-icon">
+       🎨
+      </div>
+      <h3>Social Media Estratégico</h3>
+      <p>Gestão completa das suas redes sociais com foco em conversão e crescimento sustentável do seu negócio.</p>
+      <ul class="service-features">
+       <li>Feed planejado com identidade visual única e profissional</li>
+       <li>Calendário editorial personalizado alinhado aos seus objetivos</li>
+       <li>Posts estratégicos que educam, engajam e vendem</li>
+       <li>Stories interativos que geram conexão com seu público</li>
+       <li>Copy persuasiva otimizada para conversão</li>
+       <li>Análise de métricas e ajustes contínuos de estratégia</li>
+      </ul>
+     </div>
+    </div>
+   </section>
+   <section class="process" id="processo">
+    <div class="section-header">
+     <div class="section-badge">
+      🔄 Nosso Processo
+     </div>
+     <h2 class="section-title">Como trabalhamos com você</h2>
+     <p class="section-subtitle">Processo transparente, colaborativo e focado em entregar resultados excepcionais</p>
+    </div>
+    <div class="process-timeline">
+     <div class="process-step">
+      <div class="process-number">
+       1
+      </div>
+      <div class="process-content">
+       <h3>Briefing Estratégico</h3>
+       <p>Começamos mergulhando no seu negócio. Entendemos seus objetivos, público-alvo, concorrência e diferenciais. Fazemos as perguntas certas para criar uma estratégia personalizada que funcione para você.</p>
+      </div>
+     </div>
+     <div class="process-step">
+      <div class="process-number">
+       2
+      </div>
+      <div class="process-content">
+       <h3>Planejamento Visual</h3>
+       <p>Pesquisamos referências do seu mercado, analisamos tendências e definimos a direção criativa. Criamos um moodboard e paleta de cores exclusiva que vai dar vida à identidade visual da sua marca.</p>
+      </div>
+     </div>
+     <div class="process-step">
+      <div class="process-number">
+       3
+      </div>
+      <div class="process-content">
+       <h3>Criação de Conteúdo</h3>
+       <p>Nosso time desenvolve as artes com atenção aos mínimos detalhes. Cada elemento é pensado estrategicamente: cores, tipografia, hierarquia visual, mensagem. Tudo para maximizar o impacto.</p>
+      </div>
+     </div>
+     <div class="process-step">
+      <div class="process-number">
+       4
+      </div>
+      <div class="process-content">
+       <h3>Revisão Colaborativa</h3>
+       <p>Apresentamos o trabalho e ouvimos seu feedback com atenção. Fazemos os ajustes necessários até você ficar completamente satisfeito. Seu sucesso é o nosso sucesso.</p>
+      </div>
+     </div>
+     <div class="process-step">
+      <div class="process-number">
+       5
+      </div>
+      <div class="process-content">
+       <h3>Entrega Organizada</h3>
+       <p>Você recebe todos os arquivos em formatos otimizados, organizados por data e tipo. Incluímos um guia de publicação com sugestões de legendas e melhores horários para postar.</p>
+      </div>
+     </div>
+     <div class="process-step">
+      <div class="process-number">
+       6
+      </div>
+      <div class="process-content">
+       <h3>Suporte Contínuo</h3>
+       <p>Não abandonamos você após a entrega. Continuamos dispon��veis para suporte, pequenos ajustes e melhorias. Acompanhamos os resultados e otimizamos a estratégia continuamente.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="transformation">
+    <div class="section-header">
+     <div class="section-badge">
+      📈 Transformação
+     </div>
+     <h2 class="section-title">O resultado que você vai ter</h2>
+    </div>
+    <div class="transformation-box">
+     <h3>Um feed profissional que atrai clientes, gera autoridade e aumenta suas vendas todos os dias</h3>
+    </div>
+   </section>
+   <section class="differentials">
+    <div class="section-header">
+     <div class="section-badge">
+      ⭐ Por Que Escolher a STREET
+     </div>
+     <h2 class="section-title">Diferenciais que fazem a diferença</h2>
+     <p class="section-subtitle">Não somos apenas mais uma agência. Somos parceiros do seu crescimento</p>
+    </div>
+    <div class="differentials-grid">
+     <div class="differential-card"><span class="differential-icon">⚡</span>
+      <h3>Resposta em até 24h</h3>
+      <p>Sabemos que tempo é dinheiro. Por isso, respondemos rápido e começamos a trabalhar sem enrolação. Você nunca fica no vácuo.</p>
+     </div>
+     <div class="differential-card"><span class="differential-icon">🎯</span>
+      <h3>Atenção personalizada</h3>
+      <p>Você não será mais um número. Cada projeto recebe nossa dedicação total do início ao fim. Tratamos seu negócio como se fosse nosso.</p>
+     </div>
+     <div class="differential-card"><span class="differential-icon">💎</span>
+      <h3>Investimento acessível</h3>
+      <p>Design profissional não precisa custar uma fortuna. Oferecemos qualidade premium com preço justo e transparente. Cabe no seu orçamento.</p>
+     </div>
+    </div>
+   </section>
+   <section class="portfolio-cta" id="portfolio">
+    <h2>Veja nossos trabalhos reais no Instagram</h2>
+    <p>Marcas que confiaram. Resultados que falam por si. Confira nosso portfólio completo.</p><a href="https://www.instagram.com/streetdesign_016/" target="_blank" rel="noopener noreferrer" class="btn-white">
+     <svg viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="currentColor" />
+     </svg> Ver Portfólio no Instagram </a>
+   </section>
+   <section class="faq" id="faq">
+    <div class="section-header">
+     <div class="section-badge">
+      ❓ Perguntas Frequentes
+     </div>
+     <h2 class="section-title">Tire suas dúvidas</h2>
+     <p class="section-subtitle">Tudo o que você precisa saber antes de começar a transformar sua presença digital</p>
+    </div>
+    <div class="faq-container">
+     <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+       Quanto custa o serviço de social media? 
+       <div class="faq-icon">
+        +
+       </div>
+      </div>
+      <div class="faq-answer">
+       Nossos pacotes são personalizados de acordo com suas necessidades específicas. Trabalhamos com planos mensais que incluem quantidade limitada de artes. Também oferecemos a opção de criação de artes avulsas, caso você prefira solicitar apenas uma unidade por vez. Entre em contato para receber um orçamento detalhado sem compromisso.
+      </div>
+     </div>
+     <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+       Quanto tempo leva para começar a ver resultados? 
+       <div class="faq-icon">
+        +
+       </div>
+      </div>
+      <div class="faq-answer">
+       Após a aprovação do briefing e confirmação do pagamento, iniciamos a criação imediatamente. Cada arte demora no máximo um dia para ficar pronta. Após a entrega, você já pode começar a postar e gerar resultados para o seu negócio.
+      </div>
+     </div>
+     <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+       Posso solicitar alterações nas artes criadas? 
+       <div class="faq-icon">
+        +
+       </div>
+      </div>
+      <div class="faq-answer">
+       Sim! Cada pacote inclui rodadas de revisão para garantir sua satisfa��ão total. Você pode solicitar ajustes em cores, textos, layout e outros elementos visuais. Trabalhamos em parceria com você até o resultado ficar perfeito. Queremos garantir que você fique 100% satisfeito.
+      </div>
+     </div>
+     <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+       Vocês criam os textos das publicações também? 
+       <div class="faq-icon">
+        +
+       </div>
+      </div>
+      <div class="faq-answer">
+       Sim! Al��m do design premium, criamos copies estratégicas e persuasivas para cada publicação. Nossos textos são otimizados para engajar, informar e converter seu público em clientes. Tudo alinhado com a voz e personalidade da sua marca, criando conexão genuína com sua audiência.
+      </div>
+     </div>
+     <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+       Vocês publicam nas redes sociais por mim? 
+       <div class="faq-icon">
+        +
+       </div>
+      </div>
+      <div class="faq-answer">
+       Nosso foco é a criação de artes profissionais de alta qualidade. Não realizamos o serviço de publicação nas redes sociais, nem fornecemos orientações sobre estratégias de postagem. Você recebe as artes finalizadas e fica responsável por publicá-las da forma que preferir.
+      </div>
+     </div>
+     <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+       Atendem qual tipo de negócio? 
+       <div class="faq-icon">
+        +
+       </div>
+      </div>
+      <div class="faq-answer">
+       Atendemos diversos segmentos: lojas físicas e virtuais, restaurantes, cafeterias, academias, clínicas, consult��rios, profissionais liberais, prestadores de serviços, e-commerce e muito mais. Cada projeto é 100% personalizado para o seu nicho, público-alvo e objetivos específicos de negócio.
+      </div>
+     </div>
+     <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+       E se eu não gostar do resultado final? 
+       <div class="faq-icon">
+        +
+       </div>
+      </div>
+      <div class="faq-answer">
+       Trabalhamos com briefing detalhado no início e apresentação prévia antes da entrega final. Fazemos quantas revisões forem necessárias (dentro do acordado no pacote) para garantir sua completa satisfação. Seu feedback é fundamental e essencial para nós. Só finalizamos quando você estiver feliz com o resultado.
+      </div>
+     </div>
+     <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+       Como funciona o pagamento? 
+       <div class="faq-icon">
+        +
+       </div>
+      </div>
+      <div class="faq-answer">
+       Por enquanto, trabalhamos exclusivamente com pagamento via PIX. Para pacotes mensais recorrentes, o pagamento é realizado de forma antecipada todo mês. Para artes avulsas, o pagamento também é antecipado antes do início da criação. Tudo transparente e documentado.
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="final-cta" id="contato">
+    <div class="final-cta-box">
+     <h2>Pronto para transformar sua presença digital?</h2>
+     <p>Fale com a gente agora e receba um orçamento personalizado sem compromisso. Respondemos em até 24 horas!</p>
+     <div class="final-cta-buttons"><a href="https://wa.me/5516992016914" target="_blank" rel="noopener noreferrer" class="btn-contact whatsapp">
+       <svg viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor" />
+       </svg> WhatsApp </a> <a href="https://www.instagram.com/streetdesign_016/" target="_blank" rel="noopener noreferrer" class="btn-contact instagram">
+       <svg viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="currentColor" />
+       </svg> Instagram </a>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer>
+   <div class="footer-logo"><img src="Street transparente.png" alt="STREET Design Agency">
+   </div>
+   <p>© 2025 STREET Design Agency. Transformando marcas em referências digitais.</p>
+  </footer>
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Menu mobile toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+    });
+
+    // Fechar menu ao clicar em link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // FAQ toggle
+    function toggleFAQ(element) {
+      const isActive = element.classList.contains('active');
+      
+      // Fechar todos os outros
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Abrir o clicado se não estava ativo
+      if (!isActive) {
+        element.classList.add('active');
+      }
+    }
+
+    // Smooth scroll para links internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a62e26615e98bf6',t:'MTc2NDQyNzQ4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
